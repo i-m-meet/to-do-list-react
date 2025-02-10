@@ -1,9 +1,9 @@
 
 const Header = () =>{
   return (
-    <div className="m-auto w-[1000px] mt-15">
-    <div className=" h-40  flex flex-col justify-center items-center">
-        <input type="text" placeholder="Add a task " className="h-15 p-3 text-[20px] rounded-[5px] bg-gray-100 border-1 border-gray-100 w-[700px]"/>
+    <div className=" h-40 flex flex-col justify-center items-center m-auto w-[1000px] mt-15">
+    <div className="">
+        <input type="text" placeholder="Add a task " className="h-15 p-3 text-[20px] font-semibold rounded-[5px] bg-gray-100 border-1 border-gray-100 w-[700px]"/>
         <div className="flex gap-5 mt-6 text-xl">
             <button className="bg-gray-100 px-2 rounded-[5px] hover:bg-sky-200">Html</button>
             <button className="bg-gray-100 px-2 rounded-[5px] hover:bg-sky-200">Css</button>
