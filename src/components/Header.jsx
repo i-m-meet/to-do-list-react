@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Header = () => {
+const Header = ({addTask}) => {
 
     const [selected, setSelected] = useState({
         html: false,
@@ -28,6 +28,7 @@ const Header = () => {
         const errorsData = {}
 
         Object.entries(formData).forEach(([key, value]) =>{
+            if(!validateConfig[key]) return
             validateConfig[key].some((rule) => {
                 if(rule.required && !value){
                     errorsData[key]= rule.message
@@ -70,16 +71,26 @@ const Header = () => {
     }
 
     const handleAddTask = () => {
+        const selectedOptions = Object.keys(selected).filter((key) => selected[key])
+        setTaskType(selectedOptions) 
 
-        const formData = {input, priority, status}
+        const formData = {input, priority, status, categories: selectedOptions}
         const validateFormData = validate(formData)
         if (Object.keys(validateFormData).length ===0) {
-            const selectedOptions = Object.keys(selected).filter((key) => selected[key])
-            setTaskType(selectedOptions)            
-            // console.log("task: " + input)
-            // console.log(selectedOptions)
-            // console.log("priority: " + priority)
-            // console.log("status: " + status)
+            addTask(formData)
+            setInput('')
+            setPriority('')
+            setStatus('')
+            setSelected({
+                html: false,
+                css: false,
+                javascript: false,
+                react: false,
+            })
+            console.log("task: " + input)
+            console.log(selectedOptions)
+            console.log("priority: " + priority)
+            console.log("status: " + status)
         } 
     }
 
