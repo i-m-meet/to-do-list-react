@@ -7,10 +7,15 @@ const App = () =>{
   const addTask = (task) => {
     setTasks([...tasks, task])
   }
+
+  const deleteTask = (index) => {
+    setTasks(tasks.filter((_,i)=> i !== index))
+  }
+
   return (
     <div>
       <Header addTask={addTask}/>
-      <Body tasks={tasks}/>
+      <Body tasks={tasks} deleteTask={deleteTask}/>
     </div>
   );
 }
