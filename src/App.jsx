@@ -12,10 +12,14 @@ const App = () =>{
     setTasks(tasks.filter((_,i)=> i !== index))
   }
 
+  const updateTaskStatus = (index, newStatus) => {
+    setTasks((prev) => prev.map((task, i ) => i === index ? {...task, status: newStatus}: task))
+  }
+
   return (
     <div>
       <Header addTask={addTask}/>
-      <Body tasks={tasks} deleteTask={deleteTask}/>
+      <Body tasks={tasks} deleteTask={deleteTask} updateTaskStatus={updateTaskStatus}/>
     </div>
   );
 }

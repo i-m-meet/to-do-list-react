@@ -87,10 +87,10 @@ const Header = ({addTask}) => {
                 javascript: false,
                 react: false,
             })
-            console.log("task: " + input)
-            console.log(selectedOptions)
-            console.log("priority: " + priority)
-            console.log("status: " + status)
+            // console.log("task: " + input)
+            // console.log(selectedOptions)
+            // console.log("priority: " + priority)
+            // console.log("status: " + status)
         } 
     }
 
