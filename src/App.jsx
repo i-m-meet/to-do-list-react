@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Body from "./components/Body";
 import Header from "./components/Header";
 
@@ -7,6 +7,19 @@ const App = () =>{
   const addTask = (task) => {
     setTasks([...tasks, task])
   }
+
+  useEffect(() => {
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"))
+    if(storedTasks){
+      setTasks(storedTasks)
+    }
+  }, [])
+
+  useEffect(()=> {
+    if(tasks.length> 0 ){
+      localStorage.setItem("tasks", JSON.stringify(tasks))
+    }
+  }, [tasks])
 
   const deleteTask = (index) => {
     setTasks(tasks.filter((_,i)=> i !== index))
